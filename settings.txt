@@ -1,0 +1,23 @@
+Server Name
+Kinect_Server
+
+Mirror
+false
+
+Draw Mode (RGBD, DEPTH_ONLY, RGB_ONLY, DEPTH_COLOR)
+DEPTH_ONLY
+
+Layout Mode (SD, HOLOFLIX, RGBDTK)
+SD
+
+Glitch
+false
+
+Threshold
+0
+
+Calibrate RGBD
+true
+
+Invert Depth
+false
