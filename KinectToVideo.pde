@@ -2,6 +2,7 @@ Settings settings;
 DrawMode drawMode;
 LayoutMode layoutMode;
 PGraphics dBuffer_640, dBuffer2_640, dBuffer_512, rBuffer_640, rBuffer2_640, rBuffer_512;
+PGraphics tex;
 
 PFont font;
 int fontSize = 18;
@@ -12,6 +13,8 @@ float threshold = 0;
 
 void setup() {
   size(640, 480, P2D);
+  tex = createGraphics(width, height, P2D);
+
   drawMode = DrawMode.RGBD;
   layoutMode = LayoutMode.SD;
   settings = new Settings("settings.txt");
@@ -35,7 +38,6 @@ void setup() {
   font = loadFont("Silkscreen-18.vlw");
   textFont(font, fontSize);
   
-  setupSyphon();
   setupShaders();
   setupKinect(); 
  
@@ -151,7 +153,6 @@ void draw() {
   tex.image(tex, 0, 0);
   tex.endDraw();
   
-  updateSyphon();  
   image(tex,0,0);
   
   if (millis() < lastButtonPress + textDelay) {
