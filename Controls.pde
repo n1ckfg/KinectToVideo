@@ -3,10 +3,11 @@ void keyPressed() {
     case ' ':
       if (!isRecording) {
         isRecording = true;
-        startMinimRecording(); // must go before video
         startVideoExport();
+        delay(syncDelay);
+        startMinimRecording(); // must go after video to improve sync
       } else {
-        stopMinimRecording(); // must go before video
+        stopMinimRecording(); // must go before video to create audio file
         stopVideoExport();
         isRecording = false;
       }
