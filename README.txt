@@ -1,12 +1,25 @@
-Kinect_Syphon  |  fox-gieg.com
-Processing app to send Kinect v1 / clone depth map via Syphon or Spout. 
+KinectToVideo  |  fox-gieg.com
+Processing app to record Holoflix format mp4s.
+
+It uses the SimpleOpenNI library, prioritizing compatibility over performance; primarily aimed at providing a solution for Kinect v1/clones and OS X users. It should also work on many Windows setups with native USB2 ports, but has not been as extensively tested.
+
+Tested with:
+Kinect v1 (1414)
+Asus Xtion
+PrimeSense Carmine
+Orbbec Astra
 
 CONTROLS
-D: Advance through draw modes (RGBA, depth, RGB, colorized depth).
-C: Toggle calibration in RGBA mode.
-S: Save calibration.
-L: Load saved calibration.
-R: Reset calibration.
+Space: start/stop recording
 
-Nick Fox-Gieg
-180116
+SETUP:
+Best place to get OS X OpenNI drivers:
+http://sensecast.com/files/Sensecast.and.Libs.Installer.v.0.02.dmg
+
+SimpleOpenNI library, with instructions to add OS X compatibility with Kinect v2 (not tested):
+https://github.com/totovr/SimpleOpenNI
+
+Orbbec requires an extra step explained here:
+https://3dclub.orbbec3d.com/t/running-simpleopenni-with-orbbec-sensors/35
+
+
