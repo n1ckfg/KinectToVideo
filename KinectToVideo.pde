@@ -4,6 +4,7 @@ int lastButtonPress = 0;
 int textDelay = 2000;
 boolean isRecording = false;
 int sample = 4;
+int syncDelay = 100;
 
 void setup() {
   size(1280, 720, P3D);  
@@ -15,7 +16,7 @@ void setup() {
   strokeWeight(sample);
 
   setupKinect(); 
-  setupMinim(); // must go before video
+  setupMinim();
   setupVideoExport();
   lastButtonPress = millis();
 }
