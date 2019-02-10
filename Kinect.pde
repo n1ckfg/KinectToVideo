@@ -1,7 +1,7 @@
 boolean mirror = false;
 boolean align = true;
 boolean multithreaded = true;
-//PImage depthImg, rgbImg;
+PImage depthImg, rgbImg;
 boolean invertDepth = false;
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -55,7 +55,7 @@ import SimpleOpenNI.*;
 SimpleOpenNI context;
 
 void setupKinect() {
-  depthImg = createImage(640, 480, RGB);
+  depthImg = createImage(640, 480, GRAY);
   rgbImg = createImage(640, 480, RGB);
   if (multithreaded) {
     context = new SimpleOpenNI(this,SimpleOpenNI.RUN_MODE_MULTI_THREADED);
