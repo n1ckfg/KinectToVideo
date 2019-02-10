@@ -3,13 +3,17 @@ int fontSize = 18;
 int lastButtonPress = 0;
 int textDelay = 2000;
 boolean isRecording = false;
+int sample = 4;
 
 void setup() {
-  size(1280, 720, P2D);  
-  frameRate(30);
+  size(1280, 720, P3D);  
+  setupPeasyCam();
   
   font = loadFont("Silkscreen-18.vlw");
   textFont(font, fontSize);
+  
+  strokeWeight(sample);
+
   setupKinect(); 
   setupMinim(); // must go before video
   setupVideoExport();
@@ -17,15 +21,29 @@ void setup() {
 }
 
 void draw() {
+  updateKinect();
   background(0);
   
-  updateKinect();
-  image(depthImg, 0, 120);
-  image(rgbImg, width/2, 120);
+  if (isRecording) {
+    cam.beginHUD();
+    image(depthImg, 0, 120);
+    image(rgbImg, 640, 120);
+    updateVideoExport();
+    text("RECORDING: " + currentFileName, fontSize, 1.5*fontSize);
+    cam.endHUD();
+  } else {
+    beginShape(POINTS);
+    for (int x=0; x<depthImg.width; x+=sample) {
+      for (int y=0; y<depthImg.height; y+=sample) {
+        int loc = x + y * depthImg.width;
+        PVector p = realDepth[loc];
+        stroke(rgbImg.pixels[loc]);
+        vertex(p.x, -p.y, -p.z);
+      }
+    }
+    endShape();
+  }    
   
-  if (isRecording) updateVideoExport();
-  
-  text("rec: " + isRecording, fontSize, 1.5*fontSize);
   surface.setTitle(""+frameRate);
 }
 

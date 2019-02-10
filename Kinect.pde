@@ -3,6 +3,7 @@ boolean align = true;
 boolean multithreaded = true;
 PImage depthImg, rgbImg;
 boolean invertDepth = false;
+PVector[] realDepth;
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -55,7 +56,7 @@ import SimpleOpenNI.*;
 SimpleOpenNI context;
 
 void setupKinect() {
-  depthImg = createImage(640, 480, GRAY);
+  depthImg = createImage(640, 480, RGB);
   rgbImg = createImage(640, 480, RGB);
   if (multithreaded) {
     context = new SimpleOpenNI(this,SimpleOpenNI.RUN_MODE_MULTI_THREADED);
@@ -70,6 +71,7 @@ void setupKinect() {
     context.alternativeViewPointDepthToImage();
     context.setDepthColorSyncEnabled(true);
   }
+  
 }
 
 void updateKinect() {
@@ -77,6 +79,9 @@ void updateKinect() {
   depthImg = context.depthImage();
   rgbImg = context.rgbImage();
   //rgbImg = context.irImage();
+  if (!isRecording) {
+    realDepth = context.depthMapRealWorld();
+  }
 }
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~

@@ -1,4 +1,6 @@
 import com.hamoid.*;
+String recFileName = "capture";
+String currentFileName = "";
 
 VideoExport videoExport;
 
@@ -18,6 +20,9 @@ void setupVideoExport() {
 
 void startVideoExport() {
   videoExport.setAudioFileName(audioFilePath);
+  currentFileName = recFileName + ".mp4";
+  videoExport.setMovieFileName(currentFileName);
+  //videoExport.setGraphics(buffer);
   videoExport.startMovie();
 }
 
