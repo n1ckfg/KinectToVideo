@@ -18,6 +18,9 @@ http://sensecast.com/files/Sensecast.and.Libs.Installer.v.0.02.dmg
 SimpleOpenNI library, with instructions to add OS X compatibility with Kinect v2 (not tested):
 https://github.com/totovr/SimpleOpenNI
 
+ffmpeg builds:
+https://ffmpeg.zeranoe.com/builds/
+
 Orbbec may also be possible; requires an extra step explained here:
 https://3dclub.orbbec3d.com/t/running-simpleopenni-with-orbbec-sensors/35
 
