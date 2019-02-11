@@ -1,6 +1,9 @@
 import com.hamoid.*;
-String recFileName = "capture";
+
+String baseFileName = "capture";
 String currentFileName = "";
+String videoUrl = "";
+String audioUrl = "";
 
 VideoExport videoExport;
 
@@ -19,9 +22,11 @@ void setupVideoExport() {
 }
 
 void startVideoExport() {
-  videoExport.setAudioFileName(audioFilePath);
-  currentFileName = recFileName + ".mp4";
-  videoExport.setMovieFileName(currentFileName);
+  currentFileName = baseFileName + "_" + getTimestamp();
+  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mp4";
+  audioUrl = sketchPath("") + "capture/" + currentFileName + ".wav";
+  videoExport.setMovieFileName(videoUrl);
+  videoExport.setAudioFileName(audioUrl);
   //videoExport.setGraphics(buffer);
   videoExport.startMovie();
 }
@@ -29,6 +34,12 @@ void startVideoExport() {
 void updateVideoExport() {
   videoExport.saveFrame();
 }
+
 void stopVideoExport() {
     videoExport.endMovie();
+}
+
+long getTimestamp() {
+  java.util.Date d = new java.util.Date();
+  return d.getTime()/1000; 
 }

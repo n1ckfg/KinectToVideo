@@ -3,7 +3,6 @@ import ddf.minim.*;
 Minim minim;
 AudioInput in;
 AudioRecorder fout;
-String audioFilePath = "temp.wav";
 
 void setupMinim() {
   minim = new Minim(this);
@@ -11,7 +10,7 @@ void setupMinim() {
 }
 
 void startMinimRecording() {
-  fout = minim.createRecorder(in, "data/" + audioFilePath, true);
+  fout = minim.createRecorder(in, audioUrl, true);
   fout.beginRecord();
 }
 

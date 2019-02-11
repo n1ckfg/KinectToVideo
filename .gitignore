@@ -8,5 +8,6 @@ application.macosx
 /[Bb]uild/
 *.mp4
 /data/*.wav
+/capture/*
 ffmpeg.txt
 ffmpeg-audio.txt
