@@ -30,7 +30,7 @@ void draw() {
     image(depthImg, 0, 120);
     image(rgbImg, 640, 120);
     updateVideoExport();
-    text("RECORDING: " + currentFileName, fontSize, 1.5*fontSize);
+    text(videoUrl + "\n" + audioUrl, fontSize, 1.5*fontSize);
     cam.endHUD();
   } else {
     beginShape(POINTS);
