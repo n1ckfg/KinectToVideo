@@ -1,9 +1,9 @@
 # KinectToVideo
-## Nick Fox-Gieg | fox-gieg.com
-A Processing app to record Holoflix format ProRes clips. It uses ffmpeg and the SimpleOpenNI library, prioritizing compatibility over performance. It's primarily aimed at providing a solution for Kinect v1/clones and OS X users. It should also work on many Windows setups with USB2 ports, but has not been as extensively tested.
+### Nick Fox-Gieg | fox-gieg.com
+This is a Processing app that records Holoflix format RGBD videos in the ProRes codec. It uses ffmpeg and the SimpleOpenNI library for maximum compatibility--it supports the Kinect v2, Kinect v1, and the Kinect v1 clones on OS X. It can also work with Kinect v1 on Windows, and with the Kinect v1 clones on some Windows systems with compatible USB hardware. (It doesn't work with Kinect v2 on Windows, but there are lots of other solutions for that combination.)
 
 ### Controls
-Press space to start/stop recording--that's it. The settings.json file also contains the ffmpeg settings if you'd like to experiment with recording to different codecs.
+Press space to start/stop recording--that's it. The settings.json file also contains the ffmpeg, settings if you'd like to experiment with recording to different codecs.
 
 ### OS X SETUP
 Tested with Kinect v1 (1414), Asus Xtion, PrimeSense Carmine
@@ -29,25 +29,25 @@ Tested with Kinect v1 (1414), Asus Xtion, PrimeSense Carmine
 </li>
 
 <li>
-	Extra instructions for setting up Kinect v2 on OS X (not tested):<br>
+	Instructions for setting up Kinect v2 on OS X (not tested):<br>
 	https://github.com/totovr/SimpleOpenNI/blob/master/README.md
 </li>
 
 <li>
-	Extra instructions for setting up Orbbec Astra (not tested):<br>
+	Instructions for setting up Orbbec Astra (not tested):<br>
 	https://3dclub.orbbec3d.com/t/running-simpleopenni-with-orbbec-sensors/35
 </li>
 </ol>
 
 ### WINDOWS SETUP
-Tested with Kinect v1 (1414)
+(Not tested yet.)
 <ol>
 <li>
-	Download and install the Kinect SDK 1.8:
+	For Kinect v1, download and install the Kinect SDK 1.8:<br>
 	https://www.microsoft.com/en-ca/download/details.aspx?id=40278
 </li>
 <li>
-	Install the Zeranoe build of ffmpeg for Windows:
+	Install the Zeranoe build of ffmpeg for Windows:<br>
 	https://ffmpeg.zeranoe.com/builds/
 </li>
 <li>
@@ -55,7 +55,7 @@ Tested with Kinect v1 (1414)
 	https://github.com/totovr/SimpleOpenNI
 </li>
 <li>
-	Extra instructions for setting up Orbbec Astra (not tested):<br>
+	Instructions for setting up Orbbec Astra (not tested):<br>
 	https://3dclub.orbbec3d.com/t/running-simpleopenni-with-orbbec-sensors/35
 </li>
 </ol>
