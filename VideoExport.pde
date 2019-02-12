@@ -40,7 +40,7 @@ void updateVideoExport() {
   
   if (captureInterval >= frameInterval) {
     int numFrames = round(captureInterval/frameInterval);
-    println("Capture: " + numFrames);
+    //println("Capture: " + numFrames);
     errorAccumulation += captureInterval - (numFrames * frameInterval);
     
     for (int i=0; i<numFrames; i++) {
@@ -51,7 +51,7 @@ void updateVideoExport() {
   
   if (errorAccumulation >= frameInterval) {
     int numFrames = round(errorAccumulation/frameInterval);
-    println("Sync: " + numFrames);
+    //println("Sync: " + numFrames);
     for (int i=0; i<numFrames; i++) {
       videoExport.saveFrame();
     }

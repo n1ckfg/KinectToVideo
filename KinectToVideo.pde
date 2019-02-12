@@ -29,7 +29,7 @@ void draw() {
     image(rgbImg, 640, 120);
     updateMinimRecording();
     updateVideoExport();
-    text(videoUrl + "\n" + audioUrl, fontSize, 1.5*fontSize);
+    text(videoUrl, fontSize, 1.5*fontSize);
     cam.endHUD();
   } else {
     beginShape(POINTS);
