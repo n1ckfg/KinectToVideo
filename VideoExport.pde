@@ -4,8 +4,11 @@ String baseFileName = "capture";
 String currentFileName = "";
 String videoUrl = "";
 String audioUrl = "";
-
 VideoExport videoExport;
+int lastCapture = 0;
+int frameInterval = 33;
+int captureInterval = 0;
+int errorAccumulation = 0;
 
 // Press 'q' to finish saving the movie and exit.
 
@@ -29,10 +32,33 @@ void startVideoExport() {
   videoExport.setAudioFileName(audioUrl);
   //videoExport.setGraphics(buffer);
   videoExport.startMovie();
+  lastCapture = minimElapsedTime;
 }
 
 void updateVideoExport() {
-  videoExport.saveFrame();
+  captureInterval += minimElapsedTime - lastCapture;
+  
+  if (captureInterval >= frameInterval) {
+    int numFrames = round(captureInterval/frameInterval);
+    println("Capture: " + numFrames);
+    errorAccumulation += captureInterval - (numFrames * frameInterval);
+    
+    for (int i=0; i<numFrames; i++) {
+      videoExport.saveFrame();
+    }
+    captureInterval = 0;
+  }
+  
+  if (errorAccumulation >= frameInterval) {
+    int numFrames = round(errorAccumulation/frameInterval);
+    println("Sync: " + numFrames);
+    for (int i=0; i<numFrames; i++) {
+      videoExport.saveFrame();
+    }
+    errorAccumulation = 0;    
+  }
+  
+  lastCapture = minimElapsedTime;
 }
 
 void stopVideoExport() {

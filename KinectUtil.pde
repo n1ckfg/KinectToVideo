@@ -11,3 +11,7 @@ void setupKinectLookupTable() {
 float getGrayDepthValue(int val) {
   return kinectLookupTable[val];
 }
+
+static final int gray(color value) { 
+  return max((value >> 16) & 0xff, (value >> 8 ) & 0xff, value & 0xff);
+}

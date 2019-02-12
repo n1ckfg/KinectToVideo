@@ -3,6 +3,8 @@ import ddf.minim.*;
 Minim minim;
 AudioInput in;
 AudioRecorder fout;
+int minimElapsedTime = 0;
+int minimStartTime = 0;
 
 void setupMinim() {
   minim = new Minim(this);
@@ -12,6 +14,12 @@ void setupMinim() {
 void startMinimRecording() {
   fout = minim.createRecorder(in, audioUrl, true);
   fout.beginRecord();
+  minimStartTime = millis();
+  minimElapsedTime = 0;
+}
+
+void updateMinimRecording() {
+  minimElapsedTime = millis() - minimStartTime;
 }
 
 void stopMinimRecording() {
