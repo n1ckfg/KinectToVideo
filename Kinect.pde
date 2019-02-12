@@ -4,6 +4,8 @@ boolean multithreaded = true;
 PImage depthImg, rgbImg;
 boolean invertDepth = false;
 PVector[] realDepth;
+int[] depthMap;
+boolean useFastPreview = true;
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -71,7 +73,7 @@ void setupKinect() {
     context.alternativeViewPointDepthToImage();
     context.setDepthColorSyncEnabled(true);
   }
-  
+  setupKinectLookupTable();
 }
 
 void updateKinect() {
@@ -80,7 +82,11 @@ void updateKinect() {
   rgbImg = context.rgbImage();
   //rgbImg = context.irImage();
   if (!isRecording) {
-    realDepth = context.depthMapRealWorld();
+    if (useFastPreview) {
+      depthMap = context.depthMap();
+    } else {
+      realDepth = context.depthMapRealWorld();
+    }
   }
 }
 
