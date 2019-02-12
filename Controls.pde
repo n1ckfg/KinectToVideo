@@ -12,5 +12,7 @@ void keyPressed() {
         isRecording = false;
       }
       break;
+    case 'r':
+      setupPeasyCam();
   }  
 }
