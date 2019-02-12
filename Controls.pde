@@ -4,7 +4,6 @@ void keyPressed() {
       if (!isRecording) {
         isRecording = true;
         startVideoExport();
-        delay(syncDelay);
         startMinimRecording(); // must go after video to improve sync
       } else {
         stopMinimRecording(); // must go before video to create audio file

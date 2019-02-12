@@ -23,7 +23,7 @@ void setupVideoExport() {
 
 void startVideoExport() {
   currentFileName = baseFileName + "_" + getTimestamp();
-  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mp4";
+  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mov";
   audioUrl = sketchPath("") + "capture/" + currentFileName + ".wav";
   videoExport.setMovieFileName(videoUrl);
   videoExport.setAudioFileName(audioUrl);
