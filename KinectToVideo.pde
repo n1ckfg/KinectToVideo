@@ -37,9 +37,15 @@ void draw() {
     for (int x=0; x<depthImg.width; x+=sample) {
       for (int y=0; y<depthImg.height; y+=sample) {
         int loc = x + y * depthImg.width;
-        PVector p = realDepth[loc];
         stroke(rgbImg.pixels[loc]);
-        vertex(p.x, -p.y, -p.z);
+        
+        if (useFastPreview) {
+          float z = getGrayDepthValue(depthMap[loc]);
+          if (z > 0.2) vertex(x, y, -z);
+        } else {
+          PVector p = realDepth[loc];
+          vertex(p.x, -p.y, -p.z);
+        }
       }
     }
     endShape();
