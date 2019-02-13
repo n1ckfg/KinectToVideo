@@ -10,7 +10,7 @@ Tested with Kinect v1 (1414), Asus Xtion, PrimeSense Carmine
 <ol>
 <li>
 	Java apps now need to be approved in the Terminal on OS X. Cd to the application directory and type:<br>
-	```shell
+	```shell session
 	xattr -d com.apple.quarantine KinectToVideo.app
 	```
 </li>
