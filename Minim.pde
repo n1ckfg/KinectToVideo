@@ -18,7 +18,7 @@ void setupMinim() {
 
 void startMinimRecording() {
   currentFileName = baseFileName + "_" + getTimestamp();
-  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mov";
+  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mp4";
   audioUrl = sketchPath("") + "capture/" + currentFileName + ".wav";
   
   fout = minim.createRecorder(in, audioUrl, true);
