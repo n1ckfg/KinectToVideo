@@ -6,7 +6,7 @@ int sample = 4;
 
 void setup() {
   size(1280, 720, P3D);  
-  frameRate(60);
+  //frameRate(60);
   setupPeasyCam();
   
   font = loadFont("Silkscreen-18.vlw");
