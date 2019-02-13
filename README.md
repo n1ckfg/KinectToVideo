@@ -9,8 +9,8 @@ Press space to start/stop recording--that's it. The settings.json file also cont
 Tested with Kinect v1 (1414), Asus Xtion, PrimeSense Carmine
 <ol>
 <li>
-	Java apps now need to be approved in the Terminal on OS X. Cd to the application directory and type:
-	```xattr -d com.apple.quarantine KinectToVideo.app```
+	Java apps now need to be approved in the Terminal on OS X. Cd to the application directory and type:<br>
+	`xattr -d com.apple.quarantine KinectToVideo.app`
 </li>
 <li>
 	Set up the Homebrew package manager for OS X if you haven't already:<br>
@@ -19,7 +19,7 @@ Tested with Kinect v1 (1414), Asus Xtion, PrimeSense Carmine
 
 <li>
 	Use Homebrew to install ffmpeg:<br>
-	```brew install ffmpeg```
+	`brew install ffmpeg`
 </li>
 
 <li>
