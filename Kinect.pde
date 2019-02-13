@@ -8,9 +8,10 @@ int[] depthMap;
 boolean useFastPreview = true;
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
 /*
-// OPENKINECT (MAC / OPENNI / Kinect v1)
+// OPENKINECT
+// OS: Mac / SDK: OpenNI / Devices: Kinect v1
+
 import org.openkinect.freenect.*;
 import org.openkinect.processing.*;
 
@@ -30,10 +31,11 @@ void updateKinect() {
   rgbImg = kinect.getVideoImage();
 }
 */
-
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 /*
-// KINECT4WIN (WIN / MS SDK 1.8 / Kinect v1)
+// KINECT4WIN
+// OS: Win / SDK: MS 1.8 / Devices: Kinect v1
+
 import kinect4WinSDK.Kinect;
 import kinect4WinSDK.SkeletonData;
 
@@ -51,8 +53,33 @@ void updateKinect() {
 }
 */
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+/*
+// KINECTPV2
+// OS: Win / SDK: MS 2.0 / Devices: Kinect v2
 
-// SIMPLEOPENNI (Kinect v1, all platforms)
+import KinectPV2.*;
+
+KinectPV2 kinect;
+
+void setupKinect() {
+  depthImg = createImage(512, 424, RGB);
+  rgbImg = createImage(512, 424, RGB);
+  
+  kinect = new KinectPV2(this);
+  kinect.enableDepthImg(true);
+  kinect.enableColorImg(true);
+  kinect.init();
+}
+
+void updateKinect() {
+  depthImg = kinect.getDepthImage();
+  rgbImg = kinect.getColorImage();
+}
+*/
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+// OS: Win, Mac, Linux / SDK: OpenNI, MS 1.8 / Devices: Kinect v1, clones
+
 import SimpleOpenNI.*;
 
 SimpleOpenNI context;
