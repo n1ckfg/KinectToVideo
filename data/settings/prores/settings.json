@@ -18,7 +18,7 @@
     "-vcodec",
     "prores",
     "-profile:v",
-    "2",
+    "1",
     "-pix_fmt",
     "yuv422p10le",
     "-metadata",
@@ -47,5 +47,5 @@
     "-2",
     "[output]"
   ],
-  "ffmpeg_path": "/usr/local/bin/ffmpeg"
+  "ffmpeg_path": ""
 }

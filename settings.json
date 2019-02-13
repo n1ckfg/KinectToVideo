@@ -47,5 +47,5 @@
     "-2",
     "[output]"
   ],
-  "ffmpeg_path": "/usr/local/bin/ffmpeg"
+  "ffmpeg_path": "D:\\GitHub\\KINECT\\KinectToVideo\\ffmpeg\\ffmpeg.exe"
 }
