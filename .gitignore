@@ -7,7 +7,9 @@ application.windows64
 application.macosx
 /[Bb]uild/
 *.mp4
-/data/*.wav
-/capture/*
+/capture/*.mov
+/capture/*.wav
+/capture/*.mp4
+/capture/*.pkf
 ffmpeg.txt
 ffmpeg-audio.txt

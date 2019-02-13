@@ -1,12 +1,11 @@
 # KinectToVideo
 ### Nick Fox-Gieg | fox-gieg.com
-This is a Processing app that records Holoflix format RGBD videos in the ProRes codec. It uses ffmpeg and the SimpleOpenNI library for maximum compatibility--it supports the Kinect v2, Kinect v1, and the Kinect v1 clones on OS X. It should also work with Kinect v1 on Windows, and with the Kinect v1 clones on some Windows systems with compatible USB hardware.
+This is a Processing app that records Holoflix format RGBD videos to mp4 or ProRes. It uses ffmpeg and the SimpleOpenNI library for maximum compatibility--the compiled binary supports Kinect v1 and clones on both OS X and Windows. (Newer Windows systems without a USB2 port may not work with some clones.) The source also includes examples for Kinect v2.
 
 ### Controls
 Press space to start/stop recording--that's it. The settings.json file also contains the ffmpeg, settings if you'd like to experiment with recording to different codecs.
 
-### OS X SETUP
-(Tested with Kinect v1 (1414), Asus Xtion, PrimeSense Carmine.) OS X setup requires some Terminal fiddling, but when you're done you can talk to the Kinect v1, the Kinect v1 clones, and also the Kinect v2 if you complete the extra setup steps.
+### OS X SETUP for Kinect v1 (1414)
 <ol>
 <li>
 	Java apps now need to be approved in the Terminal on OS X. Cd to the application directory and type:<br>
@@ -18,56 +17,29 @@ Press space to start/stop recording--that's it. The settings.json file also cont
 </li>
 
 <li>
-	Use Homebrew to install ffmpeg:<br>
-<pre>brew install ffmpeg</pre>
+	Use Homebrew to install the Kinect v1 driver:<br>
+<pre>brew install libfreenect</pre>
 </li>
-
-<li>
-	For Kinect v1, Asus Xtion, or Primesense Carmine--use Homebrew to install OpenNI drivers for your hardware, or else use this installer:<br>
-	http://sensecast.com/files/Sensecast.and.Libs.Installer.v.0.02.dmg
-</li>
-
 <li>
 	Download the SimpleOpenNI library and place it at the root of your boot drive:<br>
 	https://github.com/totovr/SimpleOpenNI
 </li>
-
 <li>
-	Instructions for setting up Kinect v2 on OS X (not tested):<br>
-	https://github.com/totovr/SimpleOpenNI/blob/master/README.md
-</li>
-
-<li>
-	Instructions for setting up Orbbec Astra (not tested):<br>
-	https://3dclub.orbbec3d.com/t/running-simpleopenni-with-orbbec-sensors/35
+	When you first run the app, it'll prompt you to select the location of ffmpeg (in the app folder).
 </li>
 </ol>
 
-### WINDOWS SETUP
-(Not tested yet.) Windows setup is easier, but the Kinect v1 clones will have difficulties on some Windows setups thanks to a driver issue with USB3 ports.
+### WINDOWS SETUP for Kinect v1 (1414)
 <ol>
 <li>
-	For Kinect v1, download and install the Kinect SDK 1.8:<br>
+	Download and install the Kinect SDK 1.8:<br>
 	https://www.microsoft.com/en-ca/download/details.aspx?id=40278
 </li>
 <li>
-	For Kinect v2, download and install the Kinect SDK 2.0:<br>
-	https://www.microsoft.com/en-ca/download/details.aspx?id=44561
-</li>
-<li>
-	For Asus and Primesense clones, download and install this version of OpenNI:<br>
-	https://www.brekel.com/release/brekel%20kinect%20free/Brekel%20OpenNI%20Installer.exe
-</li>
-<li>
-	Get the Zeranoe build of ffmpeg for Windows:<br>
-	https://ffmpeg.zeranoe.com/builds/
-</li>
-<li>
-	Download the SimpleOpenNI library and place it at the root of your C drive:<br>
+	Download the SimpleOpenNI library and place it at the root of your C: drive:<br>
 	https://github.com/totovr/SimpleOpenNI
 </li>
 <li>
-	Instructions for setting up Orbbec Astra (not tested):<br>
-	https://3dclub.orbbec3d.com/t/running-simpleopenni-with-orbbec-sensors/35
+	When you first run the app, it'll prompt you to select the location of ffmpeg (in the app folder).
 </li>
 </ol>
