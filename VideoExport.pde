@@ -1,15 +1,17 @@
 import com.hamoid.*;
 
-String baseFileName = "capture";
-String currentFileName = "";
-String videoUrl = "";
-String audioUrl = "";
 VideoExport videoExport;
-int lastCapture = 0;
+int lastCapture;
 int frameInterval = 33;
-int captureInterval = 0;
-int errorAccumulation = 0;
-
+int frameErrorMargin = int(frameInterval/2) + 1;
+int frameCounter;
+int elapsedFrameTime;
+int captureInterval;
+//int errorAccumulation;
+boolean videoSyncError = false;
+String videoSyncStatus;
+int nextFrameShift = 0;
+    
 // Press 'q' to finish saving the movie and exit.
 
 // In some systems, if you close your sketch by pressing ESC, 
@@ -25,39 +27,59 @@ void setupVideoExport() {
 }
 
 void startVideoExport() {
-  currentFileName = baseFileName + "_" + getTimestamp();
-  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mov";
-  audioUrl = sketchPath("") + "capture/" + currentFileName + ".wav";
   videoExport.setMovieFileName(videoUrl);
   videoExport.setAudioFileName(audioUrl);
   //videoExport.setGraphics(buffer);
   videoExport.startMovie();
-  lastCapture = minimElapsedTime;
+  lastCapture = 0;
+  frameCounter = 0;
+  elapsedFrameTime = 0;
+  captureInterval = 0;
+  //errorAccumulation = 0;
 }
 
 void updateVideoExport() {
+  int numNormalFrames = 0;
+  //int numErrorAccumulateFrames = 0;
   captureInterval += minimElapsedTime - lastCapture;
   
   if (captureInterval >= frameInterval) {
-    int numFrames = round(captureInterval/frameInterval);
-    //println("Capture: " + numFrames);
-    errorAccumulation += captureInterval - (numFrames * frameInterval);
-    
-    for (int i=0; i<numFrames; i++) {
-      videoExport.saveFrame();
-    }
+    numNormalFrames = int(round(captureInterval/frameInterval));
+    //errorAccumulation += captureInterval - (numNormalFrames * frameInterval);
+    //if (errorAccumulation >= frameInterval) {
+      //numErrorAccumulateFrames = int(round(errorAccumulation/frameInterval));
+      //errorAccumulation = 0;
+    //}
+    addVideoFrame(numNormalFrames + nextFrameShift);
     captureInterval = 0;
   }
   
-  if (errorAccumulation >= frameInterval) {
-    int numFrames = round(errorAccumulation/frameInterval);
-    //println("Sync: " + numFrames);
-    for (int i=0; i<numFrames; i++) {
-      videoExport.saveFrame();
+  videoSyncError = checkVideoSyncError();
+  if (videoSyncError) {
+    if (minimElapsedTime > elapsedFrameTime) {
+      nextFrameShift = -int(round(minimElapsedTime - elapsedFrameTime)/frameInterval) - 1;
+    } else if (minimElapsedTime < elapsedFrameTime) {
+      nextFrameShift = int(round(elapsedFrameTime - minimElapsedTime)/frameInterval) + 1;
     }
-    errorAccumulation = 0;    
+  } else {
+    nextFrameShift = 0;
   }
   
+  videoSyncStatus = "" + round(elapsedFrameTime / 1000.0);
+  if (nextFrameShift != 0) videoSyncStatus += "   sync " + nextFrameShift;
+  println(numNormalFrames + " " + nextFrameShift + " " + videoSyncError);
+}
+
+boolean checkVideoSyncError() {
+    elapsedFrameTime = frameCounter * frameInterval;
+    return elapsedFrameTime >= minimElapsedTime - frameInterval && elapsedFrameTime <= minimElapsedTime + frameInterval;
+}
+
+void addVideoFrame(int numFrames) {
+  for (int i=0; i<numFrames; i++) {
+    videoExport.saveFrame();
+    frameCounter++;
+  }
   lastCapture = minimElapsedTime;
 }
 

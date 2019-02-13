@@ -18,7 +18,7 @@
     "-vcodec",
     "prores",
     "-profile:v",
-    "1",
+    "3",
     "-pix_fmt",
     "yuv422p10le",
     "-metadata",

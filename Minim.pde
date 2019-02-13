@@ -3,8 +3,13 @@ import ddf.minim.*;
 Minim minim;
 AudioInput in;
 AudioRecorder fout;
-int minimElapsedTime = 0;
-int minimStartTime = 0;
+int minimElapsedTime;
+int minimStartTime;
+
+String baseFileName = "capture";
+String currentFileName = "";
+String videoUrl = "";
+String audioUrl = "";
 
 void setupMinim() {
   minim = new Minim(this);
@@ -12,6 +17,10 @@ void setupMinim() {
 }
 
 void startMinimRecording() {
+  currentFileName = baseFileName + "_" + getTimestamp();
+  videoUrl = sketchPath("") + "capture/" + currentFileName + ".mov";
+  audioUrl = sketchPath("") + "capture/" + currentFileName + ".wav";
+  
   fout = minim.createRecorder(in, audioUrl, true);
   fout.beginRecord();
   minimStartTime = millis();
