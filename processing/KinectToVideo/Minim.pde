@@ -11,12 +11,11 @@ String baseFileName = "capture";
 String currentFileName = "";
 String videoUrl = "";
 String audioUrl = "";
-float bufferSize, sampleRate;
+float sampleRate;
 
 void setupMinim() {
   minim = new Minim(this);
   in = minim.getLineIn(Minim.STEREO, 512);
-  bufferSize = in.bufferSize();
   sampleRate = in.sampleRate();
 }
 
@@ -51,11 +50,11 @@ void stopMinim() {
 class SyncTimer implements AudioListener {
   
   private float[] left;
-  private float[] right;
+  //private float[] right;
   
   SyncTimer() {
     left = null; 
-    right = null;
+    //right = null;
   }
   
   public synchronized void samples(float[] samp) {
@@ -64,11 +63,12 @@ class SyncTimer implements AudioListener {
   
   public synchronized void samples(float[] sampL, float[] sampR) {
     left = sampL;
-    right = sampR;
+    //right = sampR;
   }
   
   synchronized void draw() {
-    minimElapsedTime += int(bufferSize / sampleRate) * 1000;
+    float newSamples = (float) left.length;
+    minimElapsedTime += int(newSamples / sampleRate) * 1000;
   }
   
 }
