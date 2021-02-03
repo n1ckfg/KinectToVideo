@@ -27,7 +27,6 @@ void draw() {
     cam.beginHUD();
     image(depthImg, 0, 120);
     image(rgbImg, 640, 120);
-    updateMinimRecording();
     updateVideoExport();
     
     text(videoUrl + "\n" + videoSyncStatus, fontSize, 1.5*fontSize);
